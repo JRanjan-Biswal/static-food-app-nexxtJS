@@ -419,6 +419,8 @@ body {
     width: 35rem;
 }
 
+
+
 /* ////////   adjustments ///// */
 @media screen and (max-width: 1760px) {
     .dish-container div:first-child {
@@ -526,5 +528,75 @@ body {
     }
     .polka-dot-background {
         width: 20%;
+    }
+    .navigation-wrapper {
+        display: none;
+    }
+    .header-wrapper{
+        justify-content: space-between;
+    }
+    .menu {
+        padding-left: 5rem;
+    }
+    .menu-bar-show-hide {
+        display: flex;
+        flex-direction: column;
+        font-size: 2rem;
+        height: 100vh;
+        width: 100vw;
+        background-color:#ffedde;
+        position: absolute;
+        top: 7rem;
+        right: 0;
+        z-index: 3;
+        transition:width 5s;
+    }
+    /* .phrase-and-search-bar-container {
+        display: none;
+    } */
+    .search-bar-and-slider-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .phrase-and-search-bar-container {
+        font-size: 2rem;
+        padding: 0;
+    }
+
+    .search-bar-container > div > input {
+        height: 1rem;
+    }
+    
+    .search-bar-container > div > input::placeholder {
+        color: lightgray;
+        padding-left: 0.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .search-bar-container > div > button {
+        height: 2rem;
+
+        font-size: 0.9rem;
+    }
+    .polka-dot-background {
+        display: none;
+    }
+
+    .location-bar {
+        left: -10rem;
+        bottom: -30rem;
+    }
+
+    .slider-image-container {
+        margin-top: 5rem;
+    }
+
+    .slider-button {
+        position: absolute;
+        bottom: 1rem !important;
+        left: 0rem;
+        background-color:#ab868e;
+        border-radius: 2rem;
     }
 }

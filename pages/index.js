@@ -20,11 +20,13 @@ import line from "../public/line.png"
 import googlePlay from "../public/google-play-bad.png";
 import appStore from "../public/app-store.png";
 import mobile from "../public/mobile.png";
+import menu from "../public/list.svg"
 
 
 export default function Home() {
   const width = UseWindowWidth();
   const [currentIndex, setNewIndex] = useState(0)
+
 
   function sliderClick(text) {
     let newIndex = 0;
@@ -46,10 +48,15 @@ export default function Home() {
     const indexToRemove = currentActive.findIndex((ele, index) =>
       ele.classList.contains('show-single-image')
     );
-    // currentActive[newIndex].classList.add('slide-out-image');
     currentActive[newIndex].classList.add('show-single-image');
     currentActive[indexToRemove].classList.remove('show-single-image');
     setNewIndex(newIndex)
+  }
+
+  const handleMenu = () => {
+    const navigation = document.getElementsByClassName('navigation-wrapper')
+    console.log(navigation[0].classList)
+    navigation[0].classList.toggle('menu-bar-show-hide')
   }
 
   return (
@@ -59,14 +66,23 @@ export default function Home() {
 
           {/* navigation / Header */}
           <nav className='header-wrapper'>
-
+            {width < 1051 &&
+              <div className='menu'  >
+                <Image src={menu} objectFit="contain"
+                  height={30}
+                  width={30} 
+                  onClick={() => handleMenu()}/>
+              </div>
+            }
+              <div style={{padding:"2rem"}}><Image src={logo} alt="logo" /></div>
             <div className='navigation-wrapper'>
-              <div><Image src={logo} alt="logo" /></div>
               <div><a>Menu One</a></div>
               <div><a>Menu Two</a></div>
               <div><a>Menu Three</a></div>
               <div><a>Menu Four</a></div>
             </div>
+
+            
 
             <div className='user-profile-wrapper'>
               <div>
@@ -137,7 +153,7 @@ export default function Home() {
                   <Image src={meetingMain} objectFit={'contain'} />
                 </div>
                 <div>
-                  <Image src={leftArrow} width={100}/>
+                  <Image src={leftArrow} width={100} />
                 </div>
 
                 <div>
@@ -162,7 +178,7 @@ export default function Home() {
                   <p>adipiscing elit, sed do </p>
                 </div>
                 <div>
-                  <Image src={rightArrow} width={100}/>
+                  <Image src={rightArrow} width={100} />
                 </div>
                 <div>
                   <Image src={dishMain} objectFit={'contain'} />
@@ -200,7 +216,7 @@ export default function Home() {
                 <p>adipiscing elit, sed do </p>
               </div>
               <div className='button-wrapper'>
-                <div><Image src={googlePlay}/></div>
+                <div><Image src={googlePlay} /></div>
                 <div><Image src={appStore} /></div>
               </div>
             </div>
