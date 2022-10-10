@@ -11,11 +11,11 @@ import prevArrow from "../public/prevArrow.png"
 import nextArrow from "../public/nextArrow.png"
 import { useEffect, useState } from 'react';
 import geoAltFill from "../public/geo-alt-fill.svg"
-import meetingMain from "../public/meeting-main.png";
-import dishMain from "../public/dish-main-logo.png";
+import meetingMain from "../public/meeting.png";
+import dishMain from "../public/dish.png";
 import leftArrow from "../public/arrow-left.png";
 import rightArrow from "../public/arrow-right.png";
-import scooterMain from "../public/scooter-main.png";
+import scooterMain from "../public/scooter.png";
 import line from "../public/line.png"
 import googlePlay from "../public/google-play-bad.png";
 import appStore from "../public/app-store.png";
@@ -48,7 +48,6 @@ export default function Home() {
     const indexToRemove = currentActive.findIndex((ele, index) =>
       ele.classList.contains('show-single-image')
     );
-    console.log(indexToRemove, newIndex)
     currentActive[newIndex].classList.add('show-single-image');
     currentActive[indexToRemove].classList.remove('show-single-image');
     setNewIndex(newIndex)
@@ -142,14 +141,16 @@ export default function Home() {
                 <div><input placeholder='search restaurant and food' /></div>
                 <div><button>Go</button></div>
               </div>
-              {/* <div className='location-bar'>
-                <div>
-                  <Image src={geoAltFill} objectFit='contain' objectPosition={"center"} />
-                </div>
-                <div>
-                  Hyderabad
-                </div>
-              </div> */}
+
+            </div>
+
+            <div className='location-bar'>
+              <div>
+                <Image src={geoAltFill} objectFit='contain' objectPosition={"center"} />
+              </div>
+              <div>
+                Hyderabad
+              </div>
             </div>
 
             <div className='slider-image-container'>
@@ -158,8 +159,8 @@ export default function Home() {
                 <div>
                   <ul data-slider-image>
                     <li className='slide-single-image show-single-image'><Image src={food1} layout='responsive' /></li>
-                    <li className='slide-single-image' ><Image src={food2}  
-                    layout='responsive'/></li>
+                    <li className='slide-single-image' ><Image src={food2}
+                      layout='responsive' /></li>
                     <li className='slide-single-image'><Image src={food3} layout="responsive" /></li>
                   </ul>
                 </div>
@@ -174,7 +175,7 @@ export default function Home() {
 
         </div>
 
-        {/* <div className='second-page-wrapper'>
+        <div className='second-page-wrapper'>
 
           <div className='second-page-child-one'>
             <div className='our-services'>
@@ -188,58 +189,63 @@ export default function Home() {
             </div>
           </div>
 
-          <div className='second-page-child-two'>
+          <div className='second-page-child-two second-page-grid-wrapper'>
 
-            <div className='meeting-dish-image-container'>
-              <div className='meeting-container'>
-                <div>
-                  <Image src={meetingMain} objectFit={'contain'} />
-                </div>
-                <div>
-                  <Image src={leftArrow} width={100} />
-                </div>
+            {/* /////  Meeting /////// */}
 
-                <div>
-                  <div>
-                    <p>advanced table</p>
-                    <p>booking<Image src={line} width={100} /></p>
+            <div className='second-page-meeting-wrapper'>
+              <div className='meeting-container-flex  second-page-child-container-background'>
+                <div className='main-image'>
+                  <Image src={meetingMain} alt="people-in-meeting" />
+                </div>
+                <div className='arrow'>
+                  <img src="/arrow-left.png" alt="left-arrow" />
+                </div>
+                <div className='para'>
+                  <div className='para-header'>
+                    <div>advanced table</div>
+                    booking <img src="/line.png" alt="line" width={100} />
                   </div>
-                  <p>Lorem ipsum dolor sit </p>
-                  <p> amet, consectetur </p>
-                  <p>adipiscing elit, sed do </p>
-                </div>
-
-              </div>
-              <div className='dish-container'>
-                <div>
-                  <div>
-                    <p>Food for Free</p>
-                    <p><Image src={line} width={150} />24/7</p>
-                  </div>
-                  <p>Lorem ipsum dolor sit </p>
-                  <p> amet, consectetur </p>
-                  <p>adipiscing elit, sed do </p>
-                </div>
-                <div>
-                  <Image src={rightArrow} width={100} />
-                </div>
-                <div>
-                  <Image src={dishMain} objectFit={'contain'} />
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 </div>
               </div>
             </div>
 
-            <div className='scooter-container'>
-              <div>
-                <Image src={scooterMain} objectFit="contain" />
-                <div>
-                  <div>
-                    <p>free Home Delivery</p>
+            {/* ///// scooter ///// */}
+
+            <div className='second-page-scooter-wrapper grid-child'>
+              <div className='scooter-container-flex  second-page-child-container-background'>
+                <div className='main-image'>
+                  <Image src={scooterMain} alt="scooter" />
+                </div>
+                <div className='para'>
+                  <div className='para-header'>
+                    free home deliveryat your door steps
                   </div>
-                  <p>Lorem ipsum dolor sit </p>
-                  <p> amet, consectetur </p>
-                  <p>adipiscing elit, sed do </p>
-                  <p><Image src={line} width={250} /></p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  <img src="/line.png" alt="line" width={200} />
+                </div>
+              </div>
+            </div>
+
+
+            {/* ////// dish ///////  */}
+
+            <div className='second-page-dish-container'>
+              <div className='dish-container-flex  second-page-child-container-background'>
+                <div className='para'>
+                  <div className='para-header'>
+                    <div>Food for Free</div>
+                    <img src="/line.png" alt="line" width={150} /> 24/7
+                  </div>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+
+                </div>
+                <div className='arrow'>
+                  <img src="/arrow-right.png" alt="right-arrow" />
+                </div>
+                <div className='main-image'>
+                  <Image src={dishMain} alt="dish-plate" />
                 </div>
               </div>
             </div>
@@ -248,7 +254,7 @@ export default function Home() {
 
 
         </div>
-
+        {/*
         <div className='third-page-wrapper'>
 
           <div>
