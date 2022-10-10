@@ -69,12 +69,14 @@ export default function Home() {
       clearTimeout(timer)
     }, 201);
   }
-  // useEffect(() => {
-  //   let time = setTimeout(() => {
-  //     sliderClick('next')
-  //   }, 5000);
-  //   return () => clearTimeout(time)
-  // }, [currentIndex])
+
+  useEffect(() => {
+    let time = setTimeout(() => {
+      sliderClick('next')
+    }, 5000);
+    return () => clearTimeout(time)
+  }, [currentIndex])
+
 
   function headerColorChanger() {
     let header = document.getElementsByClassName('header-wrapper')[0]
@@ -121,7 +123,7 @@ export default function Home() {
 
           <div className='user-profile-wrapper'>
             <div>
-              <img src="/mask.png" alt="mask" />
+              <img src="/mask.png" />
               <span>User</span>
             </div>
 
@@ -155,9 +157,10 @@ export default function Home() {
               <div className='slider-images'>
                 <div>
                   <ul data-slider-image>
-                    <li className='slide-single-image show-single-image'><Image src={food1} width={600} height={600} /></li>
-                    <li className='slide-single-image' ><Image src={food2} width={600} height={600} /></li>
-                    <li className='slide-single-image'><Image src={food3} width={600} height={600} /></li>
+                    <li className='slide-single-image show-single-image'><Image src={food1} layout='responsive' /></li>
+                    <li className='slide-single-image' ><Image src={food2}  
+                    layout='responsive'/></li>
+                    <li className='slide-single-image'><Image src={food3} layout="responsive" /></li>
                   </ul>
                 </div>
                 <div className='slider-button'>
