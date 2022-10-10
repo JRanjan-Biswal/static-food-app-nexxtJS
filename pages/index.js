@@ -123,7 +123,7 @@ export default function Home() {
 
           <div className='user-profile-wrapper'>
             <div>
-              <img src="/mask.png" />
+              <Image src={mask} alt="user" />
               <span>User</span>
             </div>
 
