@@ -14,7 +14,7 @@ import geoAltFill from "../public/geo-alt-fill.svg"
 import meetingMain from "../public/meeting-main.png";
 import dishMain from "../public/dish-main-logo.png";
 import leftArrow from "../public/arrow-left.png";
-import rightArrow from "../public/arroow-right.png";
+import rightArrow from "../public/arrow-right.png";
 import scooterMain from "../public/scooter-main.png";
 import line from "../public/line.png"
 import googlePlay from "../public/google-play-bad.png";
@@ -48,49 +48,89 @@ export default function Home() {
     const indexToRemove = currentActive.findIndex((ele, index) =>
       ele.classList.contains('show-single-image')
     );
+    console.log(indexToRemove, newIndex)
     currentActive[newIndex].classList.add('show-single-image');
     currentActive[indexToRemove].classList.remove('show-single-image');
     setNewIndex(newIndex)
   }
 
   const handleMenu = () => {
-    const navigation = document.getElementsByClassName('navigation-wrapper')
-    console.log(navigation[0].classList)
-    navigation[0].classList.toggle('menu-bar-show-hide')
+    let element = document.getElementsByClassName('navigation-wrapper')[0];
+    if (element.classList.contains('navigation-wrapper-small-screen')) {
+      element.classList.remove('navigation-wrapper-small-screen')
+      element.classList.add('navigation-wrapper-small-screen-hide')
+    }
+    else {
+      element.classList.add('navigation-wrapper-small-screen');
+      element.classList.remove('navigation-wrapper-small-screen-hide')
+    }
+    let timer = setTimeout(() => {
+      element.classList.remove('navigation-wrapper-small-screen-hide')
+      clearTimeout(timer)
+    }, 201);
   }
+  // useEffect(() => {
+  //   let time = setTimeout(() => {
+  //     sliderClick('next')
+  //   }, 5000);
+  //   return () => clearTimeout(time)
+  // }, [currentIndex])
+
+  function headerColorChanger() {
+    let header = document.getElementsByClassName('header-wrapper')[0]
+    if (window.scrollY > 10) {
+      if (header.classList.contains('header-color-change')) {
+        return;
+      }
+      header.classList.add('header-color-change')
+    }
+    if (window.scrollY == 0) {
+      header.classList.remove('header-color-change')
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => headerColorChanger())
+
+    return () => window.removeEventListener('scroll', () => headerColorChanger)
+  })
+
+
 
   return (
     <>
       <div>
+        {/* navigation / Header */}
+        <nav className='header-wrapper'>
+
+          <div className="menu" onClick={handleMenu}>
+            <img src="/list.svg" />
+          </div>
+
+          <div style={{ padding: "2rem" }}>
+            <Image src={logo} alt="logo" height={50} width={100} />
+          </div>
+          <div className='navigation-wrapper'>
+            <div><a>Menu One</a></div>
+            <div><a>Menu Two</a></div>
+            <div><a>Menu Three</a></div>
+            <div><a>Menu Four</a></div>
+          </div>
+
+
+
+          <div className='user-profile-wrapper'>
+            <div>
+              <img src="/mask.png" alt="mask" />
+              <span>User</span>
+            </div>
+
+          </div>
+        </nav>
+
+
+        {/* /////////////// first page wrapper /////////// */}
         <div className='first-page-wrapper'>
-
-          {/* navigation / Header */}
-          <nav className='header-wrapper'>
-            {width < 1051 &&
-              <div className='menu'  >
-                <Image src={menu} objectFit="contain"
-                  height={30}
-                  width={30} 
-                  onClick={() => handleMenu()}/>
-              </div>
-            }
-              <div style={{padding:"2rem"}}><Image src={logo} alt="logo" /></div>
-            <div className='navigation-wrapper'>
-              <div><a>Menu One</a></div>
-              <div><a>Menu Two</a></div>
-              <div><a>Menu Three</a></div>
-              <div><a>Menu Four</a></div>
-            </div>
-
-            
-
-            <div className='user-profile-wrapper'>
-              <div>
-                <Image src={mask} alt="mask" />
-                <span>User</span>
-              </div>
-            </div>
-          </nav>
 
           <div className='search-bar-and-slider-wrapper'>
 
@@ -100,14 +140,14 @@ export default function Home() {
                 <div><input placeholder='search restaurant and food' /></div>
                 <div><button>Go</button></div>
               </div>
-              <div className='location-bar'>
+              {/* <div className='location-bar'>
                 <div>
                   <Image src={geoAltFill} objectFit='contain' objectPosition={"center"} />
                 </div>
                 <div>
                   Hyderabad
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className='slider-image-container'>
@@ -121,8 +161,8 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className='slider-button'>
-                  <Image src={prevArrow} data-slider-button-prev onClick={() => sliderClick('prev')} />
-                  <Image src={nextArrow} data-slider-button-next onClick={() => sliderClick('next')} />
+                  <img src="/prevArrow.png" data-slider-button-prev onClick={() => sliderClick('prev')} />
+                  <img src='/nextArrow.png' data-slider-button-next onClick={() => sliderClick('next')} />
                 </div>
               </div>
             </div>
@@ -131,7 +171,7 @@ export default function Home() {
 
         </div>
 
-        <div className='second-page-wrapper'>
+        {/* <div className='second-page-wrapper'>
 
           <div className='second-page-child-one'>
             <div className='our-services'>
@@ -203,31 +243,32 @@ export default function Home() {
 
           </div>
 
-          <div className='third-page-wrapper'>
-
-            <div>
-              <div className='heading-wrapper'>
-                <p>Download App for</p>
-                <p>Exciting  Deals</p>
-              </div>
-              <div className='phrase-wrapper'>
-                <p>Lorem ipsum dolor sit </p>
-                <p> amet, consectetur </p>
-                <p>adipiscing elit, sed do </p>
-              </div>
-              <div className='button-wrapper'>
-                <div><Image src={googlePlay} /></div>
-                <div><Image src={appStore} /></div>
-              </div>
-            </div>
-            <div className='mobile-display-wrapper'>
-              <Image src={mobile} objectFit="contain" />
-            </div>
-
-          </div>
 
         </div>
 
+        <div className='third-page-wrapper'>
+
+          <div>
+            <div className='heading-wrapper'>
+              <p>Download App for</p>
+              <p>Exciting  Deals</p>
+            </div>
+            <div className='phrase-wrapper'>
+              <p>Lorem ipsum dolor sit </p>
+              <p> amet, consectetur </p>
+              <p>adipiscing elit, sed do </p>
+            </div>
+            <div className='button-wrapper'>
+              <div><Image src={googlePlay} /></div>
+              <div><Image src={appStore} /></div>
+            </div>
+          </div>
+          <div className='mobile-display-wrapper'>
+            <Image src={mobile} objectFit="contain" />
+          </div>
+
+        </div>
+ */}
 
       </div>
     </>
