@@ -371,6 +371,7 @@ body {
 .third-page-wrapper {
     height: 100vh;
     width: 100%;
+    margin-top: 15%;
     background-color: #ffedde;
     display: flex;
     justify-content: space-evenly;
@@ -437,6 +438,11 @@ body {
         width: 1.9rem;
     }
 }
+@media screen and (max-width: 1450px) {
+    .third-page-wrapper {
+        margin-top: 20%;
+    }
+}
 @media screen and (max-width: 1210px) {
     .dish-container-flex .arrow {
         right: 15rem;
@@ -460,6 +466,22 @@ body {
     }
     .meeting-container-flex .arrow {
         left: 13rem;
+    }
+    .third-page-wrapper {
+        margin-top: 25%;
+        padding:0 2.5rem;
+        box-sizing: border-box;
+    }
+    .third-page-wrapper .heading-wrapper {
+        font-size: 3rem;
+    }
+
+    .third-page-wrapper .heading-wrapper::before {
+        content: "";
+        height: 6rem;
+        width: 0.8rem;
+        left: -1rem;
+        top: 0.5rem;
     }
 }
 @media screen and (max-width: 1000px) {
@@ -527,6 +549,9 @@ body {
     .grid-child {
         margin: 1rem 0 1rem;
         height: 50%;
+    }
+    .third-page-wrapper {
+        margin-top: 75%;
     }
 }
 @media screen and (max-width: 720px) {
@@ -652,6 +677,9 @@ body {
     .second-page-child-container-background .para .para-header {
         font-size: 1.6rem;
     }
+    .third-page-wrapper {
+        margin-top: 85%;
+    }
 }
 
 @keyframes widthIncrease {
@@ -716,8 +744,11 @@ body {
         bottom: -4rem;
         left: -2rem;
     }
-    .second-page-dish-container{
+    .second-page-dish-container {
         padding-bottom: 3rem !important;
+    }
+    .third-page-wrapper {
+        margin-top: 95%;
     }
 }
 
@@ -763,15 +794,37 @@ body {
     .scooter-container-flex .para .para-header {
         padding-top: 1rem !important;
     }
-    .scooter-container-flex .para >img {
+    .scooter-container-flex .para > img {
         width: 100px;
         height: 2px;
     }
-    .meeting-container-flex .arrow > img{
-        bottom: -3rem
+    .meeting-container-flex .arrow > img {
+        bottom: -3rem;
     }
     .dish-container-flex .arrow > img {
         bottom: -3rem;
-        left: -1.2rem
+        left: -1.2rem;
+    }
+    .third-page-wrapper {
+        margin-top: 150%;
+        height: 50vh;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+    .third-page-wrapper .heading-wrapper p {
+        font-size: 1.5rem;
+    }
+    .third-page-wrapper .phrase-wrapper p {
+        font-size: 1rem;
+    }
+    .mobile-display-wrapper {
+        width: 20rem !important;
+    }
+    .third-page-wrapper .heading-wrapper::before {
+        content: "";
+        height: 3rem;
+        width: 0.3rem;
+        top: 0;
+        left: -0.7rem
     }
 }
